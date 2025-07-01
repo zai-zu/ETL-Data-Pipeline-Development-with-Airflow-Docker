@@ -1,0 +1,72 @@
+#############################################
+# 1) ARCHIVOS Y CARPETAS GENERALES DE PYTHON
+#############################################
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+*.sqlite3
+# Entornos virtuales locales
+.venv/
+venv/
+ENV/
+env/
+
+#############################################
+# 2) CONFIGURACIÓN Y SECRETOS
+#############################################
+# Variables de entorno, tokens, claves…
+.env*
+.envrc
+# Ficheros de conexión de Airflow (si los exportas)
+connections.yaml
+# Claves de Fernet si las tienes aparte
+fernet_key.txt
+
+#############################################
+# 3) DOCKER
+#############################################
+# Carpetas que usa Docker para los volúmenes
+postgres-db-volume/
+# Imágenes / capas temporales de builds locales
+**/tmp_docker_build*/
+*.tar      # export-image
+# docker compose override opcional y artefactos
+docker-compose.override.yml
+*.log
+
+#############################################
+# 4) AIRFLOW
+#############################################
+# Logs gigantes que genera Airflow
+logs/
+# Archivos de runtime (pid, cfg generados, etc.)
+airflow.cfg
+airflow.db
+unittests.cfg
+# DAG bags cacheados en los workers
+__airflow*__/  # por si acaso
+
+
+
+#############################################
+# 5) EDITOR / IDE
+#############################################
+# VSCode
+.vscode/
+# PyCharm / JetBrains
+.idea/
+# Otros posibles
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+#############################################
+# 6) DOCUMENTACIÓN GENERADA
+#############################################
+build/
+dist/
+site/
