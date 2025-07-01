@@ -29,20 +29,20 @@ Airflow**, and store everything in **PostgreSQL**._
 ## 3. Getting started ⚡
 
 
-# 1 Clone the repository
+### 1 Clone the repository
 `git clone https://github.com/zai-zu/ETL-Data-Pipeline-Development-with-Airflow-Docker.git`
 
 
-# 2 Spin up the entire stack (builds the custom Airflow image on first run)
+### 2 Spin up the entire stack (builds the custom Airflow image on first run)
 docker compose up --build -d         # add `-V` to reset volumes from scratch
 
-# 3 Log in to Airflow UI
+### 3 Log in to Airflow UI
 open http://localhost:8080           # user: airflow  password: airflow
 
 ---
 
 ## 4. Project structure 🗂️ 
-
+```
 src_3/
 ├─ dags/                # Airflow DAGs
 │  └─ driven_data_pipeline.py
@@ -57,7 +57,7 @@ src_3/
 ├─ Dockerfile           # extends apache/airflow:2.10.2 with project deps
 ├─ docker-compose.yml   # 7-service stack
 └─ requirements.txt     # dbt-core, dbt-postgres, faker, polars
-
+```
 ---
 ## 5. How the pipeline works 🛠️
 
@@ -82,16 +82,16 @@ driven_staging.
 _Non-PII & PII_ models reference `dim_person`; keep it fresh if columns
 change.
 
-**Schedule:** daily at 07:00 (cron * 7 * * *), no backfilling (`catchup=False`).
+Schedule: daily at 07:00, no backfilling (`catchup=False`).
 ---
 ## 6. Accessing the data 🔎
 
-# psql inside the container
+### psql inside the container
 `docker exec -it src_3-postgres-1 psql -U airflow -d airflow`
 
-# list schemas
+### list schemas
 airflow=# \dn
-# list trusted tables
+### list trusted tables
 airflow=# \dt driven_trusted.*
 Or connect via pgAdmin 4
 `Host: localhost | Port: 5432 | DB: airflow | User/Pass: airflow`
