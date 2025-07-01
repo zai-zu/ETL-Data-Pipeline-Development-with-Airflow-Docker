@@ -82,7 +82,7 @@ driven_staging.
 _Non-PII & PII_ models reference `dim_person`; keep it fresh if columns
 change.
 
-Schedule: daily at 07:00, no backfilling (`catchup=False`).
+##### Schedule: daily at 07:00, no backfilling (`catchup=False`).
 ---
 ## 6. Accessing the data 🔎
 
@@ -90,10 +90,14 @@ Schedule: daily at 07:00, no backfilling (`catchup=False`).
 `docker exec -it src_3-postgres-1 psql -U airflow -d airflow`
 
 ### list schemas
-airflow=# \dn
+`airflow=# \dn`
+
 ### list trusted tables
-airflow=# \dt driven_trusted.*
-Or connect via pgAdmin 4
+
+`airflow=# \dt driven_trusted.*`
+
+### Or connect via pgAdmin 4_
+
 `Host: localhost | Port: 5432 | DB: airflow | User/Pass: airflow`
 ---
 ## 7. Common commands 🧰
