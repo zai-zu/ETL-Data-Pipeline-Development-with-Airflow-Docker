@@ -1,7 +1,7 @@
 # Driven Data – Local Batch Pipeline  
-_A complete, container-based playground that shows how to generate synthetic
-network-usage data, model it with **dbt**, orchestrate the flow with **Apache
-Airflow**, and store everything in **PostgreSQL**._
+
+
+_A comprehensive, container-based environment demonstrating how to generate synthetic network usage data, model it using **dbt**, orchestrate workflows with **Apache Airflow**, and securely store the results in **PostgreSQL**._
 
 ---
 
@@ -22,7 +22,7 @@ Airflow**, and store everything in **PostgreSQL**._
 * **Docker Desktop / Docker Engine 24 +**
 * **Docker Compose v2** (already bundled with Docker Desktop)
 * **Git** (to clone this repo)
-* **Make** (optional – shortcuts)
+* **PostgreSQL** ( Check your ready-to-use data results)
 
 ---
 
