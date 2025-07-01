@@ -14,7 +14,7 @@ Airflow**, and store everything in **PostgreSQL**._
 | **Data generator** | `dags/driven_data_pipeline.py` (Faker + Polars code) | Creates 💯-1 000 synthetic rows per run, masks PII in non-PII layer, appends a UUID, and writes to `data/raw_data.csv`. |
 
 > The project adapts the “Chapter 3: Batch Processing – Local Pipeline ” guided in the course Big Data Engineer-Softserve Academy
-> practice from the Driven Path course. :contentReference[oaicite:0]{index=0}
+> practice from the Driven Path course. 
 
 ---
 
@@ -28,9 +28,9 @@ Airflow**, and store everything in **PostgreSQL**._
 
 ## 3. Getting started ⚡
 
-```bash
+
 # 1 Clone the repository
-git clone https://github.com/zai-zu/ETL-Data-Pipeline-Development-with-Airflow-Docker.git
+`git clone https://github.com/zai-zu/ETL-Data-Pipeline-Development-with-Airflow-Docker.git`
 
 
 # 2 Spin up the entire stack (builds the custom Airflow image on first run)
@@ -39,6 +39,7 @@ docker compose up --build -d         # add `-V` to reset volumes from scratch
 # 3 Log in to Airflow UI
 open http://localhost:8080           # user: airflow  password: airflow
 
+---
 
 ## 4. Project structure 🗂️ 
 
@@ -57,7 +58,7 @@ src_3/
 ├─ docker-compose.yml   # 7-service stack
 └─ requirements.txt     # dbt-core, dbt-postgres, faker, polars
 
-
+---
 ## 5. How the pipeline works 🛠️
 
 1. `extract_raw_data` **( PythonOperator )**
@@ -82,11 +83,11 @@ _Non-PII & PII_ models reference `dim_person`; keep it fresh if columns
 change.
 
 **Schedule:** daily at 07:00 (cron * 7 * * *), no backfilling (`catchup=False`).
-
+---
 ## 6. Accessing the data 🔎
 
 # psql inside the container
-docker exec -it src_3-postgres-1 psql -U airflow -d airflow
+`docker exec -it src_3-postgres-1 psql -U airflow -d airflow`
 
 # list schemas
 airflow=# \dn
@@ -94,7 +95,7 @@ airflow=# \dn
 airflow=# \dt driven_trusted.*
 Or connect via pgAdmin 4
 `Host: localhost | Port: 5432 | DB: airflow | User/Pass: airflow`
-
+---
 ## 7. Common commands 🧰
 
 | What                       | Command                                    |
@@ -105,7 +106,7 @@ Or connect via pgAdmin 4
 | Stop everything            | `docker compose down`                      |
 | Stop & delete volumes      | `docker compose down -v`                   |
 
-
+---
 ## 8. Troubleshooting 🩹
 - `column … does not exist` during dbt run
 → Run `dbt run -s staging_dim_person --full-refresh` first, then trusted
@@ -118,7 +119,8 @@ in `docker-compose.yml` and is healthy.
 - Password auth fails when using psql on host
 → Use the container port (`localhost:5432`, user/pass `airflow`) and
 ensure no local Postgres is already listening on 5432.
-
+---
 ## 9. Contributing 🤝
 Pull requests are welcome! Please open an issue first to discuss your
 proposed change. When updating DAG code, run `pre-commit run --all-files`
+---
